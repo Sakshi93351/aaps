@@ -2,7 +2,6 @@ public class ques14 {
 
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
         if (nums1.length > nums2.length) {
-            // Always binary search on the smaller array
             return findMedianSortedArrays(nums2, nums1);
         }
 
@@ -21,17 +20,14 @@ public class ques14 {
             int minRight2 = (partition2 == m) ? Integer.MAX_VALUE : nums2[partition2];
 
             if (maxLeft1 <= minRight2 && maxLeft2 <= minRight1) {
-                // Found the correct partition
                 if ((n + m) % 2 == 0) {
                     return (Math.max(maxLeft1, maxLeft2) + Math.min(minRight1, minRight2)) / 2.0;
                 } else {
                     return Math.max(maxLeft1, maxLeft2);
                 }
             } else if (maxLeft1 > minRight2) {
-                // Move the partition in nums1 to the left
                 high = partition1 - 1;
             } else {
-                // Move the partition in nums1 to the right
                 low = partition1 + 1;
             }
         }
@@ -39,7 +35,6 @@ public class ques14 {
         throw new IllegalArgumentException("Input arrays are not sorted.");
     }
 
-    // Main method
     public static void main(String[] args) {
         int[] nums1 = {1, 3};
         int[] nums2 = {2};
@@ -48,4 +43,5 @@ public class ques14 {
         System.out.println("Median is: " + median);
     }
 }
-
+// Time Complexity: O(log(min(n, m))) where n and m are the lengths of the two arrays
+// Space Complexity: O(1)

@@ -1,13 +1,11 @@
 class TrieNode {
-    TrieNode[] children = new TrieNode[2];  // Two children, 0 or 1
+    TrieNode[] children = new TrieNode[2];  
 }
 
 public class ques23 {
     
-    // Function to insert a number in the Trie
     private static void insert(TrieNode root, int num) {
         TrieNode node = root;
-        // Insert each bit of the number
         for (int i = 31; i >= 0; i--) {
             int bit = (num >> i) & 1;
             if (node.children[bit] == null) {
@@ -17,14 +15,11 @@ public class ques23 {
         }
     }
     
-    // Function to find the maximum XOR for a given number with the Trie
     private static int findMaxXOR(TrieNode root, int num) {
         TrieNode node = root;
         int maxXor = 0;
-        // Traverse the Trie and try to get the maximum XOR
         for (int i = 31; i >= 0; i--) {
             int bit = (num >> i) & 1;
-            // Try to take the opposite bit to maximize XOR
             int oppositeBit = bit == 0 ? 1 : 0;
             if (node.children[oppositeBit] != null) {
                 maxXor |= (1 << i);
@@ -36,17 +31,14 @@ public class ques23 {
         return maxXor;
     }
     
-    // Function to find the maximum XOR of two numbers in the array
     public static int findMaximumXOR(int[] nums) {
         TrieNode root = new TrieNode();
         int maxXor = 0;
         
-        // Insert each number into the Trie
         for (int num : nums) {
             insert(root, num);
         }
         
-        // For each number, find the maximum XOR with the numbers inserted so far
         for (int num : nums) {
             maxXor = Math.max(maxXor, findMaxXOR(root, num));
         }
@@ -54,10 +46,11 @@ public class ques23 {
         return maxXor;
     }
     
-    // Main method
     public static void main(String[] args) {
-        int[] nums = {3, 10, 5, 25, 2, 8};  // Example array
+        int[] nums = {3, 10, 5, 25, 2, 8};  
         
         System.out.println("Maximum XOR of two numbers in the array: " + findMaximumXOR(nums));
     }
 }
+// Time Complexity: O(n * 32) = O(n) since we are inserting and searching in a trie of height 32 (for 32-bit integers)
+// Space Complexity: O(n * 32) = O(n) for the trie structure, where n is the number of elements in the array

@@ -1,6 +1,5 @@
 public class ques11 {
 
-    // Function to find two numbers that add up to the target
     public static void findTwoSum(int[] arr, int target) {
         int left = 0, right = arr.length - 1;
 
@@ -19,8 +18,6 @@ public class ques11 {
 
         System.out.println("No pair found that adds up to the target.");
     }
-
-    // Main method
     public static void main(String[] args) {
         int[] arr = {2, 3, 4, 7, 11, 15};
         int target = 9;
@@ -28,4 +25,6 @@ public class ques11 {
         findTwoSum(arr, target);
     }
 }
+// Time Complexity: O(n)
+// Space Complexity: O(1)
 

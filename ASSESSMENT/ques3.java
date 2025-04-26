@@ -29,4 +29,5 @@ public class ques3 {
         }
     }
 }
+//O(n) Time and O(1) Space
 

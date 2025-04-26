@@ -2,16 +2,13 @@ import java.util.*;
 
 public class ques40 {
 
-    // Function to find the element with maximum frequency
     public static int findMaxFrequencyElement(int[] arr) {
         Map<Integer, Integer> freqMap = new HashMap<>();
         
-        // Step 1: Count frequencies
         for (int num : arr) {
             freqMap.put(num, freqMap.getOrDefault(num, 0) + 1);
         }
 
-        // Step 2: Find the element with the highest frequency
         int maxFreq = 0;
         int maxFreqElement = arr[0];
         
@@ -25,7 +22,6 @@ public class ques40 {
         return maxFreqElement;
     }
 
-    // Main method to test the code
     public static void main(String[] args) {
         int[] arr = {1, 3, 2, 1, 4, 1, 3, 3, 3};
         
@@ -33,4 +29,5 @@ public class ques40 {
         System.out.println("Element with maximum frequency: " + result);
     }
 }
-
+// Time Complexity: O(n) for traversing the array and O(n) for the frequency map
+// Space Complexity: O(n) for the frequency map

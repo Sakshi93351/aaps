@@ -1,11 +1,9 @@
 public class ques16 {
 
-    // Function to find the majority element
     public static int majorityElement(int[] nums) {
         int candidate = -1;
         int count = 0;
 
-        // First pass: find a potential majority element
         for (int num : nums) {
             if (count == 0) {
                 candidate = num;
@@ -17,7 +15,6 @@ public class ques16 {
             }
         }
 
-        // Second pass (optional): Verify the candidate appears more than n/2 times
         int countVerify = 0;
         for (int num : nums) {
             if (num == candidate) {
@@ -32,7 +29,6 @@ public class ques16 {
         }
     }
 
-    // Main method
     public static void main(String[] args) {
         int[] nums = {3, 2, 3};
 
@@ -43,4 +39,5 @@ public class ques16 {
         }
     }
 }
-
+// Time Complexity: O(n) for finding the majority element
+// Space Complexity: O(1) for using constant space

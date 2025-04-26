@@ -1,6 +1,5 @@
 public class ques17 {
 
-    // Function to calculate the trapped water
     public static int trap(int[] height) {
         if (height == null || height.length == 0) {
             return 0;
@@ -10,20 +9,19 @@ public class ques17 {
         int left_max = 0, right_max = 0;
         int waterTrapped = 0;
 
-        // Traverse the array from both ends
         while (left <= right) {
             if (height[left] <= height[right]) {
                 if (height[left] >= left_max) {
-                    left_max = height[left];  // Update the left_max
+                    left_max = height[left];  
                 } else {
-                    waterTrapped += left_max - height[left];  // Water trapped on this bar
+                    waterTrapped += left_max - height[left];  
                 }
                 left++;
             } else {
                 if (height[right] >= right_max) {
-                    right_max = height[right];  // Update the right_max
+                    right_max = height[right];  
                 } else {
-                    waterTrapped += right_max - height[right];  // Water trapped on this bar
+                    waterTrapped += right_max - height[right];  
                 }
                 right--;
             }
@@ -32,10 +30,12 @@ public class ques17 {
         return waterTrapped;
     }
 
-    // Main method
     public static void main(String[] args) {
         int[] height = {0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
 
         System.out.println("Total water trapped: " + trap(height));
     }
+
 }
+// Time Complexity: O(n)
+// Space Complexity: O(1)
